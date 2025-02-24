@@ -60,7 +60,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-ava_iacobucci@.uri.edu.
+ava_iacobucci@.uri.edu, james_carr@uri.edu, jack.manni@uri.edu, and nplamondon@uri.edu.
 
 All complaints will be reviewed and investigated promptly and fairly.
 
