@@ -48,6 +48,43 @@ comments, commits, code, wiki edits, issues, and other contributions that are
 not aligned to this Code of Conduct, and will communicate reasons for moderation
 decisions when appropriate.
 
+
+## Team Standards
+
+### Decisions
+
+Decisions will be made with a conversation between all leading team members, and a popular vote will determine if the decision is passed or not.
+
+### Attendance
+
+Attendance is mandatory for every class meeting. The excusable reasons for absence include: family emergencies, injury, illness, or other serious reasons unless a planned vacation was notified to the team members in advance. When you are absent, you must make sure that you are keeping up the team over Discord or email, as well as your weekly work. 
+
+### Participation
+
+Communication will all mostly be held over Discord, where there can be meetings, etc. all online. Over time, work will be dedicated to each team member, and work will also be distributed to the members based on their interests whenever possible. 
+
+### Meeting Times/Locations
+
+Meetings will be hosted as needed, and schedules will be shared between team members so that our meeting times align with one another. Meetings will be held over Discord unless there is something extremely important, then meetings will be held in the library in-person. 
+
+### Agenda/Notes
+
+Notes will be shared between team members using either Discord, a Google Drive, or something similar where we can all independently access information at will.
+
+### Promptness
+
+Notify other team members if you are late to class or meetings, as knowing where each other are and what is going on is important. 
+
+### 305Soft Policy
+
+No distracted use of technology is allowed, and all phones and laptops, etc. must be away during team meetings.
+
+### Enforcement/Feedback 
+
+The team will enforce its rules by holding team members accountable for their own actions/breaking the rules of conduct. We will give feedback per each pull request, as well as within team meetings, and give comments directly on GitHub, etc. 
+
+
+
 ## Scope
 
 This Code of Conduct applies within all community spaces, and also applies when
