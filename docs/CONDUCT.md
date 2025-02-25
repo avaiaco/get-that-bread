@@ -150,4 +150,4 @@ individual, or aggression toward or disparagement of classes of individuals.
 **Consequence**: A permanent ban from any sort of public interaction within the
 community.
 
-<img src="images/Jacks-Signature.png" width="200"> <img src="images/signature.jpg" alt="image" width="200">
+<img src="images/Jacks-Signature.png" width="200"> <img src="images/signature.jpg" alt="image" width="200"> <img src="images/JamesCarrSignature.jpg" alt="image" width="200" height="100">
