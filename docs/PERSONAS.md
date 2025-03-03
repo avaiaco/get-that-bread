@@ -8,3 +8,7 @@
 
 ### Nicholas Plamondon
 - [Lauren](https://docs.google.com/presentation/d/12CYYiCxa7VaiL7OsUo4zTznMPdTBHlsKgi63OkWh854/edit?usp=sharing)
+
+### Jack Manni 
+- [Adrianna]https://docs.google.com/presentation/d/1aOc7d0cKm6tL5ck4j3akjLCs0GBAh1DlG2b9WIyM5-M/edit?usp=sharing
+  
