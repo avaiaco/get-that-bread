@@ -17,7 +17,7 @@ Observation 3:
 - **Supporting Data:** 96.7% (29/30 as of 3/3/25) of our users selected "North America" when asked about the region they're from.
 - **Team Action:** Prioritize North American tax guidelines when developing the tax-reduce features.
 
-- Observation 4:
+Observation 4:
 - **Observation:** The biggest features people want to see are receipt scanning and product information
 - **Supporting Data:** 56.6% of survery responses picked receipt scanning and 26.9% picked production information for features they wanted to see
 - **Team Action:** Since these are the most requsted features we should prioritize them during development
