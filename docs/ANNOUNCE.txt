@@ -1,5 +1,1 @@
-# App Announcement
-
-## Get That Bread
-
 Introducing Get That Bread, the first price-logging application designed for tracking gluten-free food expenses for tax deductions!
