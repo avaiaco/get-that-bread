@@ -1,6 +1,6 @@
 # A/B Testing Ideas
 
-### Ava
+### Ava Iacobucci
 **A/B Test Name**:  Simple versus complex sign in/sign up screen.
 
 **User Story Number**: US1 (Account Creation)
