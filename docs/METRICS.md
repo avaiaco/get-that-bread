@@ -3,8 +3,6 @@
 
 [Heart Framework](https://docs.google.com/presentation/d/1I606hHl0xZqUDgTvlH2gNzADXv0paruSkbIkqUY07vo/edit?usp=sharing)
 
-- Metric 1: Through analyzing consumer surveys from users, we will implement an NPS questionare to persuade users into rating the features our app and their experience using it, which will provide us valuable insight in developing future releases.
-
 ## NPS Survey:
 
 The Net Promoter Score data will be collected when the user fills out the rating survey when the button to "leave a review" is pressed. We have a specific section to avoid any popups that may deter users from pressing certain buttons or using the app, as sometimes ratings can be a bit frustrating, especially since our app is used for a specific purpose. In the future, we may add another rating for when the user clicks, or saves a certain amount of recipes on Get That Bread. The data will be stored within the ratings collection in Firestore Database.
