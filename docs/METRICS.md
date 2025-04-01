@@ -11,6 +11,8 @@ The Net Promoter Score data will be collected when the user fills out the rating
 
 ## Adoption:
 
+## Retention: 
+
 ## Active Users:
 
 ## User Location: 
