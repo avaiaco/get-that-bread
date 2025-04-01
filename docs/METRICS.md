@@ -12,6 +12,7 @@ The Net Promoter Score data will be collected when the user fills out the rating
 ## Adoption:
 
 ## Retention: 
+We will be measuring the retention of our app by monitoring the number of weekly active users of our app, as well as the churn rate. This will be done by keeping track in the backend whenever a unique user logs into the app. With this information, we will be able to derive the number of unique users that have used the app each week, and also be able to calculate the churn rate by analyzing how many different users have stopped using the app altogether.
 
 ## Active Users:
 
