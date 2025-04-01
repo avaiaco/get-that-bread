@@ -14,6 +14,7 @@ We will measure the adoptability of our apps through analyzing the metrics given
 We will be measuring the retention of our app by monitoring the number of weekly active users of our app, as well as the churn rate. This will be done by keeping track in the backend whenever a unique user logs into the app. With this information, we will be able to derive the number of unique users that have used the app each week, and also be able to calculate the churn rate by analyzing how many different users have stopped using the app altogether.
 
 ## Active Users:
+We see active users as those who interact with the app in a meaningful way within a given time frame. This includes activities like logging in, saving a recipe, scanning a receipt, or performing a search. We will track active users through Firebase Analytics to measure overall engagement. This data will be used to understand how often users are coming back to use Get That Bread, identify trends in usage, and inform design or feature improvements. Users will be considered “active” if they complete at least one key action during the time period being measured.
 
 ## User Location: 
 
