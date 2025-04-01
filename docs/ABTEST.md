@@ -41,4 +41,24 @@ My hypothesis is by providing the user an option to sign in with their email, as
 
 
 **Variations:** I want to test a login page prompting the user with their email and password and a seperate page that prompts the user for their username and password.
+
+
+### Nicholas Plamondon
+**A/B Test Name**: Emphasized Google Sign-Up vs. Neutral Sign-Up Options
+
+**User Story Number**: US1 (Account Creation)
+
+**Metrics**: # of users completing sign-up, time to complete sign-up, sign-up method used (Google vs. manual email/password)
+
+**Hypothesis**:
+My hypothesis is that by visually emphasizing the Google sign-up option could see a higher sign-up rate, as it is much more convinent than manually entering everything and most people are pretty familiar with logging in via google. If empahsis is placed on this option over manual we could see higher retention during the onboarding process. 
+
+**Experiment**:
+To test we can have two different versions of the sign-up screen: In the control version, both sign-up options (manual email/password and Google) are presented with equal visual weight and placement. In the test version, the Google sign-up option is emphasized. This will include positioning the Google button at the top of the screen, possibly making it larger or using a more vibrant color, and maybe also adding supportive text such as “Fastest way to get started." Users would be assigned randomly and completion rates, time to complete, and which method users chose would be tracked. We’ll also optionally track short-term retention to see if one method correlates with better user engagement.
+
+**Variations**: Variation A (Control): Sign-up screen presents both Google and manual email sign-up equally (neutral layout, stacked buttons) and Variation B (Test): Google sign-up button is emphasized in size, color, and position (top of the screen), with supporting text like “Recommended” or “Fastest way to get started.” Email sign-up is still available but appears secondary
+
+
+
+
  
