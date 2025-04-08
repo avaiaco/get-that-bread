@@ -1,7 +1,7 @@
 # Get That Bread Test Cases
 
 ### US1
-- <link to template slide> US1: User Account Creation
+- [Template Slide](https://docs.google.com/presentation/d/1R7KAscFgvnALF_uoT3QPa2s79EAZHP8sFpKuNSh-6aU/edit?usp=sharing) US1: User Account Creation
 
 ### US2
 - [Template Slide](https://docs.google.com/presentation/d/1FevGcNn7T9nlh3xvLwxECNCWGn8sw6DWBjdi9kmMzRo/edit?usp=sharing) US2: User Login
