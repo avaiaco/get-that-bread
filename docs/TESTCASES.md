@@ -9,8 +9,8 @@
 ### US3
 - <link to template slide> US3: Backend Management
 
-##US4
+### US4
 - <link to template slide> US4: {Golden Path description}
 
-##US5
+### US5
 - <link to template slide> US5: …
