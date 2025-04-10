@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "179267814872",
+    "project_id": "get-that-bread-asju8m",
+    "storage_bucket": "get-that-bread-asju8m.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179267814872:android:fb88bb08928d2916931ead",
+        "android_client_info": {
+          "package_name": "com.mycompany.getthatbread"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZnwtRVuh2508zzBV9fk_iHrAbAp_RLLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
