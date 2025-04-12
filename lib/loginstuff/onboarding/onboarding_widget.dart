@@ -156,6 +156,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 24.0),
                                   child: Text(
+                                    key: ValueKey('ProfileCreation_2tm6'),
                                     'Create Your Profile!',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
