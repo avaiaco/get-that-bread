@@ -246,6 +246,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                       .update(createUsersRecordData(
                                     photoUrl: _model.uploadedFileUrl,
                                   ));
+                                  logFirebaseEvent('Stack_update_app_state');
+                                  FFAppState().placeholderPFP =
+                                      _model.userinfo!.photoUrl;
+                                  safeSetState(() {});
                                 },
                                 child: Stack(
                                   alignment: AlignmentDirectional(-1.0, 1.0),
@@ -254,8 +258,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 10.0),
                                       child: Container(
-                                        width: 100.0,
-                                        height: 100.0,
+                                        width: 106.0,
+                                        height: 106.0,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -267,13 +271,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                               _model.uploadedFileUrl,
                                             ).image,
                                           ),
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(50.0),
-                                            bottomRight: Radius.circular(50.0),
-                                            topLeft: Radius.circular(50.0),
-                                            topRight: Radius.circular(50.0),
-                                          ),
-                                          shape: BoxShape.rectangle,
+                                          shape: BoxShape.circle,
                                           border: Border.all(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
@@ -285,8 +283,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                       ),
                                     ),
                                     Container(
-                                      width: 120.0,
-                                      height: 120.0,
+                                      width: 100.0,
+                                      height: 100.0,
                                       clipBehavior: Clip.antiAlias,
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,

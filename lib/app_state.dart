@@ -85,7 +85,7 @@ class FFAppState extends ChangeNotifier {
     _purchasedItems = value;
   }
 
-  String _placeholderPFP = 'https://imgur.com/kH4Rro7';
+  String _placeholderPFP = 'https://i.imgur.com/kH4Rro7.png';
   String get placeholderPFP => _placeholderPFP;
   set placeholderPFP(String value) {
     _placeholderPFP = value;

@@ -35,7 +35,9 @@ void main() async {
 
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => FFAppState(),
-      child: const MyApp(),
+      child: MyApp(
+        entryPage: LoginWidget(),
+      ),
     ));
     await GoogleFonts.pendingFonts();
 
@@ -45,25 +47,29 @@ void main() async {
     await tester.tap(find.byKey(const ValueKey('Tab_mxm0')));
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('emailAddress_Create_knye')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.enterText(
         find.byKey(const ValueKey('emailAddress_Create_knye')),
         'meowcat1234@gmail.com');
     FocusManager.instance.primaryFocus?.unfocus();
     await tester.tap(find.byKey(const ValueKey('username_Create_woxo')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.enterText(
         find.byKey(const ValueKey('username_Create_woxo')), 'Meowcifer');
     FocusManager.instance.primaryFocus?.unfocus();
     await tester.tap(find.byKey(const ValueKey('password_Create_im95')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.enterText(
         find.byKey(const ValueKey('password_Create_im95')), 'MeowMeowMeow');
     FocusManager.instance.primaryFocus?.unfocus();
     await tester.tap(find.byKey(const ValueKey('passwordConfirm_rl93')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.enterText(
         find.byKey(const ValueKey('passwordConfirm_rl93')), 'MeowMeowMeow');
     FocusManager.instance.primaryFocus?.unfocus();
     await tester.tap(find.byKey(const ValueKey('Button_uecx')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    expect(find.text('Create Your Profile!'), findsOneWidget);
+    expect(find.byKey(const ValueKey('ProfileCreation')), findsOneWidget);
   });
 }
 
