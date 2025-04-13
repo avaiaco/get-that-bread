@@ -214,14 +214,15 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Icon(
-                              Icons.camera_alt,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 75.0,
+                          if (_model.uploadedFileUrl == '')
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Icon(
+                                Icons.camera_alt,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 75.0,
+                              ),
                             ),
-                          ),
                         ],
                       ),
                     ),

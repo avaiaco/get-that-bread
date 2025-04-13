@@ -10,7 +10,8 @@ Future initFirebase() async {
             projectId: "get-that-bread-asju8m",
             storageBucket: "get-that-bread-asju8m.firebasestorage.app",
             messagingSenderId: "179267814872",
-            appId: "1:179267814872:web:bfa489c602d6a1e8931ead"));
+            appId: "1:179267814872:web:bfa489c602d6a1e8931ead",
+            measurementId: "G-BL0W9VLMQ6"));
   } else {
     await Firebase.initializeApp();
   }

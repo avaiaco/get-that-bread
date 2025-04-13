@@ -180,34 +180,52 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                         children: [
                           Align(
                             alignment: AlignmentDirectional(-1.0, 0.0),
-                            child: Text(
-                              'Welcome, ',
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineSmall
-                                  .override(
-                                    fontFamily: 'Lemon',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    letterSpacing: 0.0,
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 5.0,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF7A4A37),
+                                  border: Border.all(
+                                    color: Colors.black,
                                   ),
-                            ).animateOnPageLoad(
-                                animationsMap['textOnPageLoadAnimation1']!),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: AuthUserStreamWidget(
-                              builder: (context) => Text(
-                                currentUserDisplayName,
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineSmall
-                                    .override(
-                                      fontFamily: 'Lemon',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      letterSpacing: 0.0,
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      'Welcome, ',
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .override(
+                                            fontFamily: 'Lemon',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBackground,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'textOnPageLoadAnimation1']!),
+                                    Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => Text(
+                                          currentUserDisplayName,
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineSmall
+                                              .override(
+                                                fontFamily: 'Lemon',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ).animateOnPageLoad(animationsMap[
+                                            'textOnPageLoadAnimation2']!),
+                                      ),
                                     ),
-                              ).animateOnPageLoad(
-                                  animationsMap['textOnPageLoadAnimation2']!),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                           Expanded(
@@ -220,191 +238,208 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                   Expanded(
                                     child: Align(
                                       alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 5.0),
-                                        child: SingleChildScrollView(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Row(
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 10.0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        child: Container(
+                                          height: 220.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                            shape: BoxShape.rectangle,
+                                            border: Border.all(
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 5.0),
+                                            child: SingleChildScrollView(
+                                              child: Column(
                                                 mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
                                                 children: [
-                                                  Expanded(
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, -1.0),
-                                                      child: Text(
-                                                        'BreadBot\'s Daily Gluten Free Recipe',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, -1.0),
+                                                          child: Text(
+                                                            'BreadBot\'s Daily Gluten Free Recipe',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .titleMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
+                                                                  color: Colors
+                                                                      .black,
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
-                                                      ).animateOnPageLoad(
-                                                          animationsMap[
-                                                              'textOnPageLoadAnimation3']!),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 6.0, 10.0, 0.0),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      logFirebaseEvent(
-                                                          'HOME_PAGE_Container_78zv4urc_ON_TAP');
-                                                      logFirebaseEvent(
-                                                          'Container_bottom_sheet');
-                                                      await showModalBottomSheet(
-                                                        isScrollControlled:
-                                                            true,
-                                                        backgroundColor:
-                                                            Colors.transparent,
-                                                        enableDrag: false,
-                                                        context: context,
-                                                        builder: (context) {
-                                                          return GestureDetector(
-                                                            onTap: () {
-                                                              FocusScope.of(
-                                                                      context)
-                                                                  .unfocus();
-                                                              FocusManager
-                                                                  .instance
-                                                                  .primaryFocus
-                                                                  ?.unfocus();
-                                                            },
-                                                            child: Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  RecipeDetailsWidget(),
-                                                            ),
-                                                          );
-                                                        },
-                                                      ).then((value) =>
-                                                          safeSetState(() {}));
-                                                    },
-                                                    child: Container(
-                                                      width: 298.8,
-                                                      height: 178.3,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            blurRadius: 15.0,
-                                                            color: Color(
-                                                                0x33000000),
-                                                            offset: Offset(
-                                                              7.0,
-                                                              2.0,
-                                                            ),
-                                                          )
-                                                        ],
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  25.0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  25.0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  25.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  25.0),
-                                                        ),
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
+                                                          ).animateOnPageLoad(
+                                                              animationsMap[
+                                                                  'textOnPageLoadAnimation3']!),
                                                         ),
                                                       ),
-                                                      child:
-                                                          SingleChildScrollView(
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
+                                                    ],
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  6.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'HOME_PAGE_Container_78zv4urc_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Container_bottom_sheet');
+                                                          await showModalBottomSheet(
+                                                            isScrollControlled:
+                                                                true,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            enableDrag: false,
+                                                            context: context,
+                                                            builder: (context) {
+                                                              return GestureDetector(
+                                                                onTap: () {
+                                                                  FocusScope.of(
+                                                                          context)
+                                                                      .unfocus();
+                                                                  FocusManager
+                                                                      .instance
+                                                                      .primaryFocus
+                                                                      ?.unfocus();
+                                                                },
+                                                                child: Padding(
+                                                                  padding: MediaQuery
+                                                                      .viewInsetsOf(
+                                                                          context),
+                                                                  child:
+                                                                      RecipeDetailsWidget(),
+                                                                ),
+                                                              );
+                                                            },
+                                                          ).then((value) =>
+                                                              safeSetState(
+                                                                  () {}));
+                                                        },
+                                                        child: Container(
+                                                          width: 298.8,
+                                                          height: 178.3,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(
+                                                                      25.0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          25.0),
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      25.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      25.0),
+                                                            ),
+                                                          ),
+                                                          child:
+                                                              SingleChildScrollView(
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           10.0,
                                                                           10.0),
-                                                              child: Text(
-                                                                FFAppState()
-                                                                    .GeminiResponse
-                                                                    .maybeHandleOverflow(
-                                                                      maxChars:
-                                                                          200,
-                                                                      replacement:
-                                                                          '…',
+                                                                  child: Text(
+                                                                    FFAppState()
+                                                                        .GeminiResponse
+                                                                        .maybeHandleOverflow(
+                                                                          maxChars:
+                                                                              200,
+                                                                          replacement:
+                                                                              '…',
+                                                                        ),
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                      fontFamily:
+                                                                          'Inter',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      shadows: [
+                                                                        Shadow(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryText,
+                                                                          offset: Offset(
+                                                                              2.0,
+                                                                              2.0),
+                                                                          blurRadius:
+                                                                              2.0,
+                                                                        )
+                                                                      ],
                                                                     ),
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                  fontFamily:
-                                                                      'Inter',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  shadows: [
-                                                                    Shadow(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      offset: Offset(
-                                                                          2.0,
-                                                                          2.0),
-                                                                      blurRadius:
-                                                                          2.0,
-                                                                    )
-                                                                  ],
+                                                                  ),
                                                                 ),
-                                                              ),
+                                                              ],
                                                             ),
-                                                          ],
+                                                          ),
                                                         ),
-                                                      ),
+                                                      ).animateOnPageLoad(
+                                                          animationsMap[
+                                                              'containerOnPageLoadAnimation1']!),
                                                     ),
-                                                  ).animateOnPageLoad(animationsMap[
-                                                      'containerOnPageLoadAnimation1']!),
-                                                ),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -414,7 +449,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                     alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          6.0, 0.0, 6.0, 0.0),
+                                          6.0, 0.0, 6.0, 20.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -431,7 +466,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                         },
                                         child: Material(
                                           color: Colors.transparent,
-                                          elevation: 2.0,
+                                          elevation: 10.0,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(12.0),
@@ -581,7 +616,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           },
                                           child: Material(
                                             color: Colors.transparent,
-                                            elevation: 2.0,
+                                            elevation: 10.0,
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(12.0),

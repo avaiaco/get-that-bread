@@ -1,4 +1,4 @@
-package com.mycompany.getthatbread
+package com.uricsc305.getthatbread
 
 import io.flutter.embedding.android.FlutterActivity
 
