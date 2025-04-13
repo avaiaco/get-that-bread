@@ -181,7 +181,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                           Align(
                             alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Text(
-                              key: ValueKey('WelcomeMsg_nkk8'),
                               'Welcome, ',
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
@@ -734,7 +733,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                         child: wrapWithModel(
                           model: _model.sidebarModel,
                           updateCallback: () => safeSetState(() {}),
-                          child: SidebarWidget(),
+                          child: SidebarWidget(
+                            key: ValueKey('sidebar_c3fp'),
+                          ),
                         ),
                         onEnter: ((event) async {
                           safeSetState(() => _model.mouseRegionHovered = true);

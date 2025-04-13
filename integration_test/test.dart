@@ -87,15 +87,14 @@ void main() async {
     await tester.enterText(
         find.byKey(const ValueKey('Email_otuq')), 'testAccount@email.com');
     FocusManager.instance.primaryFocus?.unfocus();
-    await tester.pumpAndSettle(const Duration(milliseconds: 1000));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.enterText(
         find.byKey(const ValueKey('password_3sje')), 'password');
-    await tester.pumpAndSettle(const Duration(milliseconds: 1000));
-    await tester.tap(find.byKey(const ValueKey('Button_khu9')));
-    await tester.pump(kDoubleTapMinTime);
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('Button_khu9')));
     await tester.pumpAndSettle(const Duration(milliseconds: 6000));
-    expect(find.byKey(const ValueKey('WelcomeMsg_nkk8')), findsWidgets);
+    expect(find.byKey(const ValueKey('sidebar_c3fp')), findsOneWidget);
   });
 }
 
