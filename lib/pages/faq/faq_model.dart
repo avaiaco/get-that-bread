@@ -7,8 +7,6 @@ import 'package:flutter/material.dart';
 class FaqModel extends FlutterFlowModel<FaqWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for MouseRegion widget.
-  bool mouseRegionHovered = false;
   // Model for sidebar component.
   late SidebarModel sidebarModel;
 

@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/special/sidebar/sidebar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,6 +35,14 @@ class _StatsWidgetState extends State<StatsWidget> {
 
   @override
   void dispose() {
+    // On page dispose action.
+    () async {
+      logFirebaseEvent('STATS_PAGE_stats_ON_DISPOSE');
+      logFirebaseEvent('stats_update_app_state');
+      FFAppState().IsSideBarExpanded = false;
+      safeSetState(() {});
+    }();
+
     _model.dispose();
 
     super.dispose();
@@ -809,25 +818,64 @@ class _StatsWidgetState extends State<StatsWidget> {
             ),
             Container(
               width: valueOrDefault<double>(
-                _model.mouseRegionHovered ? 210.0 : 60.0,
+                FFAppState().IsSideBarExpanded
+                    ? double.infinity
+                    : FFAppConstants.SideBarRetractedWidth.toDouble(),
                 60.0,
               ),
               child: Stack(
                 children: [
-                  MouseRegion(
-                    opaque: false,
-                    cursor: MouseCursor.defer ?? MouseCursor.defer,
-                    child: wrapWithModel(
-                      model: _model.sidebarModel,
-                      updateCallback: () => safeSetState(() {}),
-                      child: SidebarWidget(),
+                  wrapWithModel(
+                    model: _model.sidebarModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: SidebarWidget(),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          valueOrDefault<double>(
+                            FFAppState().IsSideBarExpanded
+                                ? FFAppConstants.SideBarExpandedWidth.toDouble()
+                                : 0.0,
+                            0.0,
+                          ),
+                          0.0,
+                          0.0,
+                          0.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          logFirebaseEvent('STATS_PAGE__BTN_ON_TAP');
+                          if (FFAppState().IsSideBarExpanded) {
+                            logFirebaseEvent('Button_update_app_state');
+                            FFAppState().IsSideBarExpanded = false;
+                            safeSetState(() {});
+                          } else {
+                            logFirebaseEvent('Button_update_app_state');
+                            FFAppState().IsSideBarExpanded = true;
+                            safeSetState(() {});
+                          }
+                        },
+                        text: '',
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: double.infinity,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: Color(0x00FF0026),
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Inter',
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                  ),
+                          elevation: 0.0,
+                          borderRadius: BorderRadius.circular(0.0),
+                        ),
+                      ),
                     ),
-                    onEnter: ((event) async {
-                      safeSetState(() => _model.mouseRegionHovered = true);
-                    }),
-                    onExit: ((event) async {
-                      safeSetState(() => _model.mouseRegionHovered = false);
-                    }),
                   ),
                 ],
               ),

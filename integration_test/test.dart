@@ -90,7 +90,32 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('Button_khu9')));
     await tester.pumpAndSettle(const Duration(milliseconds: 6000));
-    expect(find.byKey(const ValueKey('sidebar_c3fp')), findsOneWidget);
+    expect(find.byKey(const ValueKey('Button_xzyy')), findsOneWidget);
+  });
+
+  testWidgets('US3 Backend Services', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(
+        entryPage: LoginWidget(),
+      ),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.pumpAndSettle(const Duration(milliseconds: 8000));
+    await tester.enterText(
+        find.byKey(const ValueKey('Email_otuq')), 'testuser69420@gmail.com');
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.pumpAndSettle(const Duration(milliseconds: 2000));
+    await tester.enterText(
+        find.byKey(const ValueKey('password_3sje')), 'Payolaaa');
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.pumpAndSettle(const Duration(milliseconds: 2000));
+    await tester.tap(find.byKey(const ValueKey('Button_khu9')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 8000));
+    expect(find.byKey(const ValueKey('Container_2wn6')), findsOneWidget);
   });
 }
 

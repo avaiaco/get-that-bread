@@ -147,6 +147,14 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 
   @override
   void dispose() {
+    // On page dispose action.
+    () async {
+      logFirebaseEvent('HOME_PAGE_home_ON_DISPOSE');
+      logFirebaseEvent('home_update_app_state');
+      FFAppState().IsSideBarExpanded = false;
+      safeSetState(() {});
+    }();
+
     _model.dispose();
 
     super.dispose();
@@ -186,9 +194,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Color(0xFF7A4A37),
-                                  border: Border.all(
-                                    color: Colors.black,
-                                  ),
                                 ),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -246,6 +251,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                               BorderRadius.circular(12.0),
                                         ),
                                         child: Container(
+                                          key: ValueKey('Container_2wn6'),
                                           height: 220.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
@@ -757,27 +763,67 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                 ),
                 Container(
                   width: valueOrDefault<double>(
-                    _model.mouseRegionHovered ? 210.0 : 60.0,
+                    FFAppState().IsSideBarExpanded
+                        ? double.infinity
+                        : FFAppConstants.SideBarRetractedWidth.toDouble(),
                     60.0,
                   ),
                   child: Stack(
                     children: [
-                      MouseRegion(
-                        opaque: false,
-                        cursor: MouseCursor.defer ?? MouseCursor.defer,
-                        child: wrapWithModel(
-                          model: _model.sidebarModel,
-                          updateCallback: () => safeSetState(() {}),
-                          child: SidebarWidget(
-                            key: ValueKey('sidebar_c3fp'),
+                      wrapWithModel(
+                        model: _model.sidebarModel,
+                        updateCallback: () => safeSetState(() {}),
+                        child: SidebarWidget(),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              valueOrDefault<double>(
+                                FFAppState().IsSideBarExpanded
+                                    ? FFAppConstants.SideBarExpandedWidth
+                                        .toDouble()
+                                    : 0.0,
+                                0.0,
+                              ),
+                              0.0,
+                              0.0,
+                              0.0),
+                          child: FFButtonWidget(
+                            key: ValueKey('Button_xzyy'),
+                            onPressed: () async {
+                              logFirebaseEvent('HOME_PAGE__BTN_ON_TAP');
+                              if (FFAppState().IsSideBarExpanded) {
+                                logFirebaseEvent('Button_update_app_state');
+                                FFAppState().IsSideBarExpanded = false;
+                                safeSetState(() {});
+                              } else {
+                                logFirebaseEvent('Button_update_app_state');
+                                FFAppState().IsSideBarExpanded = true;
+                                safeSetState(() {});
+                              }
+                            },
+                            text: '',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: double.infinity,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Color(0x00FF0026),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                  ),
+                              elevation: 0.0,
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
                           ),
                         ),
-                        onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered = true);
-                        }),
-                        onExit: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered = false);
-                        }),
                       ),
                     ],
                   ),

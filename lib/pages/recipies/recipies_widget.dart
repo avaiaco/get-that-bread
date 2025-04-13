@@ -112,8 +112,8 @@ class _RecipiesWidgetState extends State<RecipiesWidget> {
                           ChipData('Breakfast', Icons.free_breakfast),
                           ChipData('Lunch', Icons.lunch_dining),
                           ChipData('Dinner', Icons.dinner_dining),
-                          ChipData('Desserts', Icons.cookie),
-                          ChipData('Snacks'),
+                          ChipData('Desserts', Icons.cake),
+                          ChipData('Snacks', Icons.cookie_sharp),
                           ChipData('Favorites', Icons.favorite)
                         ],
                         onChanged: (val) => safeSetState(

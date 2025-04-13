@@ -90,4 +90,10 @@ class FFAppState extends ChangeNotifier {
   set placeholderPFP(String value) {
     _placeholderPFP = value;
   }
+
+  bool _IsSideBarExpanded = false;
+  bool get IsSideBarExpanded => _IsSideBarExpanded;
+  set IsSideBarExpanded(bool value) {
+    _IsSideBarExpanded = value;
+  }
 }

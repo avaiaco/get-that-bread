@@ -10,8 +10,6 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
 
   // Stores action output result for [Backend Call - API (GTB Ai)] action in home widget.
   ApiCallResponse? apiResult;
-  // State field(s) for MouseRegion widget.
-  bool mouseRegionHovered = false;
   // Model for sidebar component.
   late SidebarModel sidebarModel;
 

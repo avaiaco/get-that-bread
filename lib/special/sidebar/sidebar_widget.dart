@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'sidebar_model.dart';
 export 'sidebar_model.dart';
 
@@ -40,6 +41,8 @@ class _SidebarWidgetState extends State<SidebarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(-1.0, 0.0),
       child: Container(
@@ -54,7 +57,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
         ),
         alignment: AlignmentDirectional(0.0, 0.0),
         child: Align(
-          alignment: AlignmentDirectional(0.0, -1.0),
+          alignment: AlignmentDirectional(-1.0, -1.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -64,7 +67,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                   opaque: false,
                   cursor: MouseCursor.defer ?? MouseCursor.defer,
                   child: Container(
-                    width: _model.mouseRegionHovered1 ? 275.0 : 120.0,
+                    width: FFAppConstants.SideBarExpandedWidth.toDouble(),
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).tertiary,
                       borderRadius: BorderRadius.only(
@@ -118,7 +121,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                                   ),
                                 ),
                               ),
-                              if (_model.mouseRegionHovered1 == true)
+                              if (FFAppState().IsSideBarExpanded)
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
@@ -157,7 +160,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                                     ],
                                   ),
                                 ),
-                              if (_model.mouseRegionHovered1 == true)
+                              if (FFAppState().IsSideBarExpanded)
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
@@ -264,8 +267,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                                                       .primaryText,
                                               size: 24.0,
                                             ),
-                                            if (_model.mouseRegionHovered1 ==
-                                                true)
+                                            if (FFAppState().IsSideBarExpanded)
                                               Expanded(
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
@@ -359,8 +361,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                                                       .primaryText,
                                               size: 22.0,
                                             ),
-                                            if (_model.mouseRegionHovered1 ==
-                                                true)
+                                            if (FFAppState().IsSideBarExpanded)
                                               Expanded(
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
@@ -454,8 +455,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                                                       .primaryText,
                                               size: 24.0,
                                             ),
-                                            if (_model.mouseRegionHovered1 ==
-                                                true)
+                                            if (FFAppState().IsSideBarExpanded)
                                               Expanded(
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
@@ -548,8 +548,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                                                       .primaryText,
                                               size: 24.0,
                                             ),
-                                            if (_model.mouseRegionHovered1 ==
-                                                true)
+                                            if (FFAppState().IsSideBarExpanded)
                                               Expanded(
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
@@ -645,8 +644,8 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                                                         .primaryText,
                                                 size: 24.0,
                                               ),
-                                              if (_model.mouseRegionHovered1 ==
-                                                  true)
+                                              if (FFAppState()
+                                                  .IsSideBarExpanded)
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
@@ -746,8 +745,8 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                                                         .primaryText,
                                                 size: 24.0,
                                               ),
-                                              if (_model.mouseRegionHovered1 ==
-                                                  true)
+                                              if (FFAppState()
+                                                  .IsSideBarExpanded)
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
@@ -843,8 +842,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                                                       .primaryText,
                                               size: 24.0,
                                             ),
-                                            if (_model.mouseRegionHovered1 ==
-                                                true)
+                                            if (FFAppState().IsSideBarExpanded)
                                               Expanded(
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
@@ -916,7 +914,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                                     size: 24.0,
                                   ),
                                 ),
-                                if (_model.mouseRegionHovered1 == true)
+                                if (FFAppState().IsSideBarExpanded)
                                   Text(
                                     'Contact Support',
                                     style: FlutterFlowTheme.of(context)
@@ -955,7 +953,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                                     size: 24.0,
                                   ),
                                 ),
-                                if (_model.mouseRegionHovered1 == true)
+                                if (FFAppState().IsSideBarExpanded)
                                   Text(
                                     'Leave A Review',
                                     style: FlutterFlowTheme.of(context)
@@ -1013,7 +1011,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
                                       size: 24.0,
                                     ),
                                   ),
-                                  if (_model.mouseRegionHovered1 == true)
+                                  if (FFAppState().IsSideBarExpanded)
                                     Text(
                                       'Logout',
                                       style: FlutterFlowTheme.of(context)

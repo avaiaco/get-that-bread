@@ -2,18 +2,20 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'breadbot_details_model.dart';
-export 'breadbot_details_model.dart';
+import 'package:provider/provider.dart';
+import 'recipe_page_details_model.dart';
+export 'recipe_page_details_model.dart';
 
-class BreadbotDetailsWidget extends StatefulWidget {
-  const BreadbotDetailsWidget({super.key});
+class RecipePageDetailsWidget extends StatefulWidget {
+  const RecipePageDetailsWidget({super.key});
 
   @override
-  State<BreadbotDetailsWidget> createState() => _BreadbotDetailsWidgetState();
+  State<RecipePageDetailsWidget> createState() =>
+      _RecipePageDetailsWidgetState();
 }
 
-class _BreadbotDetailsWidgetState extends State<BreadbotDetailsWidget> {
-  late BreadbotDetailsModel _model;
+class _RecipePageDetailsWidgetState extends State<RecipePageDetailsWidget> {
+  late RecipePageDetailsModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -24,7 +26,7 @@ class _BreadbotDetailsWidgetState extends State<BreadbotDetailsWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => BreadbotDetailsModel());
+    _model = createModel(context, () => RecipePageDetailsModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -38,6 +40,8 @@ class _BreadbotDetailsWidgetState extends State<BreadbotDetailsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -72,7 +76,7 @@ class _BreadbotDetailsWidgetState extends State<BreadbotDetailsWidget> {
                             ),
                             onPressed: () async {
                               logFirebaseEvent(
-                                  'BREADBOT_DETAILS_COMP_close_ICN_ON_TAP');
+                                  'RECIPE_DETAILS_close_ICN_ON_TAP');
                               logFirebaseEvent('IconButton_bottom_sheet');
                               Navigator.pop(context);
                             },
@@ -83,7 +87,7 @@ class _BreadbotDetailsWidgetState extends State<BreadbotDetailsWidget> {
                   ],
                 ),
                 Text(
-                  'BreadBot',
+                  'Recipe Details',
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
                         fontFamily: 'Lemon',
                         letterSpacing: 0.0,
@@ -102,26 +106,14 @@ class _BreadbotDetailsWidgetState extends State<BreadbotDetailsWidget> {
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     alignment: AlignmentDirectional(0.0, 0.0),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsets.all(10.0),
-                              child: Text(
-                                'Hello World',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Inter',
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
+                    child: Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Text(
+                        FFAppState().GeminiResponse,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Inter',
+                              letterSpacing: 0.0,
                             ),
-                          ),
-                        ],
                       ),
                     ),
                   ),

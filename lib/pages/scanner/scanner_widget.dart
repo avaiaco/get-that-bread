@@ -188,12 +188,6 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                       height: 456.51,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).tertiary,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: Image.network(
-                            _model.uploadedFileUrl,
-                          ).image,
-                        ),
                         borderRadius: BorderRadius.circular(8.0),
                         border: Border.all(
                           color: FlutterFlowTheme.of(context).primaryText,
@@ -202,18 +196,19 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                       ),
                       child: Stack(
                         children: [
-                          Align(
-                            alignment: AlignmentDirectional(0.0, -1.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.network(
-                                '',
-                                width: 300.0,
-                                height: 470.0,
-                                fit: BoxFit.cover,
+                          if (_model.uploadedFileUrl != '')
+                            Align(
+                              alignment: AlignmentDirectional(0.0, -1.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.network(
+                                  _model.uploadedFileUrl,
+                                  width: 300.0,
+                                  height: 470.0,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
                           if (_model.uploadedFileUrl == '')
                             Align(
                               alignment: AlignmentDirectional(0.0, 0.0),

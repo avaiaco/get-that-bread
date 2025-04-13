@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'breadbot_details_widget.dart' show BreadbotDetailsWidget;
+import 'recipe_page_details_widget.dart' show RecipePageDetailsWidget;
 import 'package:flutter/material.dart';
 
-class BreadbotDetailsModel extends FlutterFlowModel<BreadbotDetailsWidget> {
+class RecipePageDetailsModel extends FlutterFlowModel<RecipePageDetailsWidget> {
   @override
   void initState(BuildContext context) {}
 
