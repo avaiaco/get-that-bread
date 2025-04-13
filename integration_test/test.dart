@@ -71,6 +71,40 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     expect(find.byKey(const ValueKey('ProfileCreation_2tm6')), findsOneWidget);
   });
+
+  testWidgets('US2 Account Login', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(
+        entryPage: LoginWidget(),
+      ),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.tap(find.byKey(const ValueKey('Email_otuq')));
+    await tester.pump(kDoubleTapMinTime);
+    await tester.tap(find.byKey(const ValueKey('Email_otuq')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 1000));
+    await tester.enterText(
+        find.byKey(const ValueKey('Email_otuq')), 'testAccount@email.com');
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.pumpAndSettle(const Duration(milliseconds: 1000));
+    await tester.tap(find.byKey(const ValueKey('Email_otuq')));
+    await tester.pump(kDoubleTapMinTime);
+    await tester.tap(find.byKey(const ValueKey('Email_otuq')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 1000));
+    await tester.enterText(
+        find.byKey(const ValueKey('Email_otuq')), 'password');
+    await tester.pumpAndSettle(const Duration(milliseconds: 1000));
+    await tester.tap(find.byKey(const ValueKey('Button_khu9')));
+    await tester.pump(kDoubleTapMinTime);
+    await tester.tap(find.byKey(const ValueKey('Button_khu9')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    expect(find.text('Welcome,'), findsWidgets);
+  });
 }
 
 // There are certain types of errors that can happen during tests but

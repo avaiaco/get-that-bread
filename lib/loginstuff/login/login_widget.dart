@@ -358,6 +358,8 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   child: Container(
                                                     width: double.infinity,
                                                     child: TextFormField(
+                                                      key: ValueKey(
+                                                          'Email_otuq'),
                                                       controller: _model
                                                           .emailTextController,
                                                       focusNode:
@@ -661,6 +663,8 @@ class _LoginWidgetState extends State<LoginWidget>
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 16.0),
                                                     child: FFButtonWidget(
+                                                      key: ValueKey(
+                                                          'Button_khu9'),
                                                       onPressed: () async {
                                                         logFirebaseEvent(
                                                             'LOGIN_PAGE_SIGN_IN_BTN_ON_TAP');
