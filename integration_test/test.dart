@@ -83,27 +83,19 @@ void main() async {
     ));
     await GoogleFonts.pendingFonts();
 
-    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
-    await tester.tap(find.byKey(const ValueKey('Email_otuq')));
-    await tester.pump(kDoubleTapMinTime);
-    await tester.tap(find.byKey(const ValueKey('Email_otuq')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 1000));
+    await tester.pumpAndSettle(const Duration(milliseconds: 6000));
     await tester.enterText(
         find.byKey(const ValueKey('Email_otuq')), 'testAccount@email.com');
     FocusManager.instance.primaryFocus?.unfocus();
     await tester.pumpAndSettle(const Duration(milliseconds: 1000));
-    await tester.tap(find.byKey(const ValueKey('Email_otuq')));
-    await tester.pump(kDoubleTapMinTime);
-    await tester.tap(find.byKey(const ValueKey('Email_otuq')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 1000));
     await tester.enterText(
-        find.byKey(const ValueKey('Email_otuq')), 'password');
+        find.byKey(const ValueKey('password_3sje')), 'password');
     await tester.pumpAndSettle(const Duration(milliseconds: 1000));
     await tester.tap(find.byKey(const ValueKey('Button_khu9')));
     await tester.pump(kDoubleTapMinTime);
     await tester.tap(find.byKey(const ValueKey('Button_khu9')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
-    expect(find.text('Welcome,'), findsWidgets);
+    await tester.pumpAndSettle(const Duration(milliseconds: 6000));
+    expect(find.byKey(const ValueKey('WelcomeMsg_nkk8')), findsWidgets);
   });
 }
 
