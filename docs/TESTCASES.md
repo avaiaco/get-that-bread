@@ -13,4 +13,4 @@
 - <link to template slide> US4: {Golden Path description}
 
 ### US5
-- [Template Slide](https://docs.google.com/presentation/d/1F1FlWxKw_SOLUlIoV9nKcgJnqqE-PU_DMnOEtwR9gBI/edit?usp=sharing) US5: Recipe Page/Management
+- [Template Slide](https://docs.google.com/presentation/d/1F1FlWxKw_SOLUlIoV9nKcgJnqqE-PU_DMnOEtwR9gBI/edit?usp=sharing) US5: Bread Bot
