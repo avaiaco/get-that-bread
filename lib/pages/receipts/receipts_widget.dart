@@ -149,9 +149,10 @@ class _ReceiptsWidgetState extends State<ReceiptsWidget> {
                         ),
                       ),
                       FFButtonWidget(
+                        key: ValueKey('DeleteButton_zunb'),
                         onPressed: () async {
-                          logFirebaseEvent('RECEIPTS_PAGE_DELETE_BTN_ON_TAP');
-                          logFirebaseEvent('Button_alert_dialog');
+                          logFirebaseEvent('RECEIPTS_PAGE_DeleteButton_ON_TAP');
+                          logFirebaseEvent('DeleteButton_alert_dialog');
                           var confirmDialogResponse = await showDialog<bool>(
                                 context: context,
                                 builder: (alertDialogContext) {
@@ -174,8 +175,23 @@ class _ReceiptsWidgetState extends State<ReceiptsWidget> {
                               ) ??
                               false;
                           if (confirmDialogResponse) {
-                            logFirebaseEvent('Button_backend_call');
+                            logFirebaseEvent('DeleteButton_backend_call');
                             await listViewReceiptsRecord.reference.delete();
+                            logFirebaseEvent('DeleteButton_show_snack_bar');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Receipt Deleted Successfully!',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                              ),
+                            );
                           }
                         },
                         text: 'Delete?',
