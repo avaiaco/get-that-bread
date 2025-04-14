@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'extra_c_o_m_p_o_n_e_n_t_widget.dart' show ExtraCOMPONENTWidget;
+import 'no_receipts_message_widget.dart' show NoReceiptsMessageWidget;
 import 'package:flutter/material.dart';
 
-class ExtraCOMPONENTModel extends FlutterFlowModel<ExtraCOMPONENTWidget> {
+class NoReceiptsMessageModel extends FlutterFlowModel<NoReceiptsMessageWidget> {
   @override
   void initState(BuildContext context) {}
 

@@ -76,6 +76,20 @@ class _FaqWidgetState extends State<FaqWidget> {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 10.0),
+                              child: Text(
+                                'Frequently Asked Questions',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .override(
+                                      fontFamily: 'Lemon',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ),
                             Align(
                               alignment: AlignmentDirectional(0.0, 1.0),
                               child: Container(
@@ -99,6 +113,9 @@ class _FaqWidgetState extends State<FaqWidget> {
                                                         .headlineSmall
                                                         .override(
                                                           fontFamily: 'Lemon',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
                                                           fontSize: 20.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -124,6 +141,9 @@ class _FaqWidgetState extends State<FaqWidget> {
                                                         .headlineSmall
                                                         .override(
                                                           fontFamily: 'Lemon',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
                                                           fontSize: 20.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -149,6 +169,9 @@ class _FaqWidgetState extends State<FaqWidget> {
                                                         .headlineSmall
                                                         .override(
                                                           fontFamily: 'Lemon',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
                                                           fontSize: 20.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -178,6 +201,9 @@ class _FaqWidgetState extends State<FaqWidget> {
                                                         .headlineSmall
                                                         .override(
                                                           fontFamily: 'Lemon',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
                                                           fontSize: 20.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -207,6 +233,9 @@ class _FaqWidgetState extends State<FaqWidget> {
                                                         .headlineSmall
                                                         .override(
                                                           fontFamily: 'Lemon',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
                                                           fontSize: 20.0,
                                                           letterSpacing: 0.0,
                                                         ),

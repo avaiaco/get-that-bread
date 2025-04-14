@@ -224,6 +224,16 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                   ),
                 ),
               ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                child: Text(
+                  'Tap above to add receipt',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Inter',
+                        letterSpacing: 0.0,
+                      ),
+                ),
+              ),
               Align(
                 alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(

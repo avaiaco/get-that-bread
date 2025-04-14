@@ -1,8 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/no_receipts_message_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'receipts_model.dart';
 export 'receipts_model.dart';
@@ -108,6 +110,9 @@ class _ReceiptsWidgetState extends State<ReceiptsWidget> {
                 );
               }
               List<ReceiptsRecord> listViewReceiptsRecordList = snapshot.data!;
+              if (listViewReceiptsRecordList.isEmpty) {
+                return NoReceiptsMessageWidget();
+              }
 
               return ListView.builder(
                 padding: EdgeInsets.zero,
@@ -117,14 +122,85 @@ class _ReceiptsWidgetState extends State<ReceiptsWidget> {
                 itemBuilder: (context, listViewIndex) {
                   final listViewReceiptsRecord =
                       listViewReceiptsRecordList[listViewIndex];
-                  return ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.network(
-                      listViewReceiptsRecord.receiptImage,
-                      width: 300.0,
-                      height: 400.0,
-                      fit: BoxFit.cover,
-                    ),
+                  return Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 5.0),
+                        child: Text(
+                          'Scanned On: ${dateTimeFormat("yMMMd", listViewReceiptsRecord.timeStamp)}',
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            12.0, 12.0, 12.0, 5.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.network(
+                            listViewReceiptsRecord.receiptImage,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                      FFButtonWidget(
+                        onPressed: () async {
+                          logFirebaseEvent('RECEIPTS_PAGE_DELETE_BTN_ON_TAP');
+                          logFirebaseEvent('Button_alert_dialog');
+                          var confirmDialogResponse = await showDialog<bool>(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('Delete Receipt?'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                            alertDialogContext, false),
+                                        child: Text('Cancel'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                            alertDialogContext, true),
+                                        child: Text('Confirm'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ) ??
+                              false;
+                          if (confirmDialogResponse) {
+                            logFirebaseEvent('Button_backend_call');
+                            await listViewReceiptsRecord.reference.delete();
+                          }
+                        },
+                        text: 'Delete?',
+                        options: FFButtonOptions(
+                          height: 31.12,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Lemon',
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                  ),
+                          elevation: 0.0,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      Divider(
+                        thickness: 7.0,
+                        color: FlutterFlowTheme.of(context).primary,
+                      ),
+                    ],
                   );
                 },
               );

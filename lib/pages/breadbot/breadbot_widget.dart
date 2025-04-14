@@ -75,7 +75,7 @@ class _BreadbotWidgetState extends State<BreadbotWidget> {
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     fontFamily: 'Lemon',
                     color: Colors.white,
-                    fontSize: 30.0,
+                    fontSize: 25.0,
                     letterSpacing: 0.0,
                   ),
             ),
@@ -112,6 +112,7 @@ class _BreadbotWidgetState extends State<BreadbotWidget> {
                         children: [
                           Text(
                             'Welcome to BreadBot',
+                            textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .headlineSmall
                                 .override(
@@ -120,7 +121,7 @@ class _BreadbotWidgetState extends State<BreadbotWidget> {
                                 ),
                           ),
                           Text(
-                            'Ask me anything and I\'ll do my best to help you. I can answer questions, provide information, and work with you to find gluten free products! Remeber. I am AI so I may be incorrect for some things! Please do your own research as well!',
+                            'Ask me anything and I\'ll do my best to help you. I can answer questions, provide information, and work with you to find gluten free products! Remeber, I am AI so some of my information may not be accruate. Please do your own research as well!',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(

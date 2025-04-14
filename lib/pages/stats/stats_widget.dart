@@ -1,3 +1,5 @@
+import '/components/add_money_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -120,24 +122,50 @@ class _StatsWidgetState extends State<StatsWidget> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    FFAppState()
-                                                        .moneySaved
-                                                        .toString(),
-                                                    '0.00',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .displaySmall
-                                                      .override(
-                                                        fontFamily: 'Lemon',
-                                                        color:
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Text(
+                                                      '\$',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .displaySmall
+                                                          .override(
+                                                            fontFamily: 'Lemon',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              -1.0, -1.0),
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          FFAppState()
+                                                              .moneySaved
+                                                              .toString(),
+                                                          '0.00',
+                                                        ),
+                                                        style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primary,
-                                                        letterSpacing: 0.0,
+                                                                .displaySmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Lemon',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
+                                                    ),
+                                                  ],
                                                 ),
                                                 Text(
                                                   'Total Saved This Month',
@@ -155,12 +183,50 @@ class _StatsWidgetState extends State<StatsWidget> {
                                                 ),
                                               ].divide(SizedBox(height: 4.0)),
                                             ),
-                                            Icon(
-                                              Icons.trending_up_rounded,
-                                              color:
+                                            FlutterFlowIconButton(
+                                              borderRadius: 8.0,
+                                              buttonSize: 40.0,
+                                              fillColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .success,
-                                              size: 32.0,
+                                                      .primary,
+                                              icon: Icon(
+                                                Icons.add,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                size: 24.0,
+                                              ),
+                                              onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'STATS_PAGE_add_ICN_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'IconButton_bottom_sheet');
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  enableDrag: false,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(context)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child: Padding(
+                                                        padding: MediaQuery
+                                                            .viewInsetsOf(
+                                                                context),
+                                                        child: AddMoneyWidget(),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then((value) =>
+                                                    safeSetState(() {}));
+                                              },
                                             ),
                                           ].divide(SizedBox(width: 8.0)),
                                         ),
@@ -627,7 +693,7 @@ class _StatsWidgetState extends State<StatsWidget> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              'Saved Italian Pasta Recipe',
+                                                              'Saved Pasta Recipe',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -639,7 +705,7 @@ class _StatsWidgetState extends State<StatsWidget> {
                                                                   ),
                                                             ),
                                                             Text(
-                                                              '2 hours ago',
+                                                              '(time...)',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .labelSmall
@@ -708,7 +774,7 @@ class _StatsWidgetState extends State<StatsWidget> {
                                                                   ),
                                                             ),
                                                             Text(
-                                                              'Yesterday',
+                                                              '(day...)',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .labelSmall
@@ -777,7 +843,7 @@ class _StatsWidgetState extends State<StatsWidget> {
                                                                   ),
                                                             ),
                                                             Text(
-                                                              '3 days ago',
+                                                              '(days ago...)',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .labelSmall
