@@ -37,14 +37,6 @@ class _StatsWidgetState extends State<StatsWidget> {
 
   @override
   void dispose() {
-    // On page dispose action.
-    () async {
-      logFirebaseEvent('STATS_PAGE_stats_ON_DISPOSE');
-      logFirebaseEvent('stats_update_app_state');
-      FFAppState().IsSideBarExpanded = false;
-      safeSetState(() {});
-    }();
-
     _model.dispose();
 
     super.dispose();

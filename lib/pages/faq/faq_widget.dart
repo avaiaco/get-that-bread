@@ -34,14 +34,6 @@ class _FaqWidgetState extends State<FaqWidget> {
 
   @override
   void dispose() {
-    // On page dispose action.
-    () async {
-      logFirebaseEvent('FAQ_PAGE_faq_ON_DISPOSE');
-      logFirebaseEvent('faq_update_app_state');
-      FFAppState().IsSideBarExpanded = false;
-      safeSetState(() {});
-    }();
-
     _model.dispose();
 
     super.dispose();

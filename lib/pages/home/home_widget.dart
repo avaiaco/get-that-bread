@@ -148,14 +148,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 
   @override
   void dispose() {
-    // On page dispose action.
-    () async {
-      logFirebaseEvent('HOME_PAGE_home_ON_DISPOSE');
-      logFirebaseEvent('home_update_app_state');
-      FFAppState().IsSideBarExpanded = false;
-      safeSetState(() {});
-    }();
-
     _model.dispose();
 
     super.dispose();

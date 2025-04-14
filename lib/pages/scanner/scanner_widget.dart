@@ -234,43 +234,45 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                       ),
                 ),
               ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () async {
-                      logFirebaseEvent('SCANNER_PAGE_saveReceipt_ON_TAP');
-                      logFirebaseEvent('saveReceipt_backend_call');
+              if (_model.uploadedFileUrl != '')
+                Align(
+                  alignment: AlignmentDirectional(0.0, 1.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        logFirebaseEvent('SCANNER_PAGE_saveReceipt_ON_TAP');
+                        logFirebaseEvent('saveReceipt_backend_call');
 
-                      await ReceiptsRecord.collection
-                          .doc()
-                          .set(createReceiptsRecordData(
-                            receiptImage: _model.uploadedFileUrl,
-                            userId: currentUserUid,
-                            timeStamp: getCurrentTimestamp,
-                          ));
-                    },
-                    text: 'Save Receipt',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Inter',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
+                        await ReceiptsRecord.collection
+                            .doc()
+                            .set(createReceiptsRecordData(
+                              receiptImage: _model.uploadedFileUrl,
+                              userId: currentUserUid,
+                              timeStamp: getCurrentTimestamp,
+                            ));
+                      },
+                      text: 'Save Receipt',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),
