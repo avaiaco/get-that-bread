@@ -146,15 +146,12 @@ void main() async {
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => FFAppState(),
       child: MyApp(
-        entryPage: HomeWidget(),
+        entryPage: BreadbotWidget(),
       ),
     ));
     await GoogleFonts.pendingFonts();
 
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
-    await tester.tap(find.byKey(const ValueKey('Button_xzyy')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.tap(find.byKey(const ValueKey('ChatbotContainer')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('ChatPrompt_z13u')));
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
