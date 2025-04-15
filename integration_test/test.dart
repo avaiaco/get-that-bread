@@ -138,6 +138,34 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     expect(find.byKey(const ValueKey('DeleteButton_zunb')), findsNothing);
   });
+
+  testWidgets('US5 Breadbot', (WidgetTester tester) async {
+    _overrideOnError();
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'meowcat12@gmail.com', password: 'MeowMeowMeow');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(
+        entryPage: HomeWidget(),
+      ),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.pumpAndSettle(const Duration(milliseconds: 10000));
+    await tester.tap(find.byKey(const ValueKey('Button_xzyy')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.tap(find.byKey(const ValueKey('ChatbotContainer')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.tap(find.byKey(const ValueKey('ChatPrompt_z13u')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.enterText(
+        find.byKey(const ValueKey('ChatPrompt_z13u')), 'How are you?');
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.tap(find.byKey(const ValueKey('IconButton_x0vf')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 10000));
+    expect(find.byKey(const ValueKey('Greeting_ccsp')), findsOneWidget);
+  });
 }
 
 // There are certain types of errors that can happen during tests but

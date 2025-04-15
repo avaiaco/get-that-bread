@@ -185,6 +185,7 @@ class _BreadbotWidgetState extends State<BreadbotWidget> {
                                     child: Align(
                                       alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
+                                        key: ValueKey('Greeting_ccsp'),
                                         'Bread Bot',
                                         style: FlutterFlowTheme.of(context)
                                             .headlineSmall
@@ -255,6 +256,7 @@ class _BreadbotWidgetState extends State<BreadbotWidget> {
                                 child: Container(
                                   width: 300.0,
                                   child: TextFormField(
+                                    key: ValueKey('ChatPrompt_z13u'),
                                     controller: _model.chatPromptTextController,
                                     focusNode: _model.chatPromptFocusNode,
                                     autofocus: false,
@@ -329,6 +331,7 @@ class _BreadbotWidgetState extends State<BreadbotWidget> {
                               ),
                             ),
                             FlutterFlowIconButton(
+                              key: ValueKey('IconButton_x0vf'),
                               buttonSize: 50.0,
                               fillColor: FlutterFlowTheme.of(context).primary,
                               icon: Icon(
