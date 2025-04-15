@@ -10,7 +10,7 @@
 - [Template Slide](https://docs.google.com/presentation/d/1H7-0HDpvgiJV3QmzDp5aINf94QVpgqM01g55VgEWpn4/edit?usp=sharing) US3: Backend Management
 
 ### US4
-- [Template Slide](https://docs.google.com/presentation/d/1F1FlWxKw_SOLUlIoV9nKcgJnqqE-PU_DMnOEtwR9gBI/edit?usp=sharing) US4: Golden Path - Receipt Scanner and Receipts Page
+- [Template Slide](https://docs.google.com/presentation/d/1W9uxr3FjShZ6CPmNogYrDCNU7YltonwCUg9x-bdqm7Y/edit?usp=sharing) US4: Golden Path - Receipt Scanner and Receipts Page
 
 ### US5
 - [Template Slide](https://docs.google.com/presentation/d/1F1FlWxKw_SOLUlIoV9nKcgJnqqE-PU_DMnOEtwR9gBI/edit?usp=sharing) US5: Bread Bot
