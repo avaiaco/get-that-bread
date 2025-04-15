@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "179267814872",
+    "project_id": "get-that-bread-asju8m",
+    "storage_bucket": "get-that-bread-asju8m.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179267814872:android:fb88bb08928d2916931ead",
+        "android_client_info": {
+          "package_name": "com.mycompany.getthatbread"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179267814872-qotebthc69d1pkgdbjuj8aqhq8p6dkc5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.getthatbread",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "179267814872-52eem81p2hqquvndpvu7elh0qlsvemku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZnwtRVuh2508zzBV9fk_iHrAbAp_RLLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179267814872-52eem81p2hqquvndpvu7elh0qlsvemku.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179267814872-59al547glf2qho8vs1df6v1aq44227qd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.uricsc305.getthatbread"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179267814872:android:7eda43c5b2f2d8a7931ead",
+        "android_client_info": {
+          "package_name": "com.uricsc305.getthatbread"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179267814872-05tavjeapdmahf5sjbkn9brf66js5ab1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uricsc305.getthatbread",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "179267814872-52eem81p2hqquvndpvu7elh0qlsvemku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZnwtRVuh2508zzBV9fk_iHrAbAp_RLLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179267814872-52eem81p2hqquvndpvu7elh0qlsvemku.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179267814872-59al547glf2qho8vs1df6v1aq44227qd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.uricsc305.getthatbread"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
