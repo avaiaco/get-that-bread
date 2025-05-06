@@ -9,3 +9,4 @@ export '/pages/faq/faq_widget.dart' show FaqWidget;
 export '/pages/scanner/scanner_widget.dart' show ScannerWidget;
 export '/loginstuff/editprofile/editprofile_widget.dart' show EditprofileWidget;
 export '/pages/breadbot/breadbot_widget.dart' show BreadbotWidget;
+export '/pages/shopping_list/shopping_list_widget.dart' show ShoppingListWidget;

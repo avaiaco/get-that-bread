@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
+import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -77,20 +80,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? entryPage ?? HomeWidget() : LoginWidget(),
+          appStateNotifier.loggedIn ? entryPage ?? NavBarPage() : LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? entryPage ?? HomeWidget()
+              ? entryPage ?? NavBarPage()
               : LoginWidget(),
         ),
         FFRoute(
           name: HomeWidget.routeName,
           path: HomeWidget.routePath,
           requireAuth: true,
-          builder: (context, params) => HomeWidget(),
+          builder: (context, params) =>
+              params.isEmpty ? NavBarPage(initialPage: 'home') : HomeWidget(),
         ),
         FFRoute(
           name: LoginWidget.routeName,
@@ -105,18 +109,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
         FFRoute(
           name: ReceiptsWidget.routeName,
           path: ReceiptsWidget.routePath,
-          builder: (context, params) => ReceiptsWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'receipts')
+              : ReceiptsWidget(),
         ),
         FFRoute(
           name: RecipiesWidget.routeName,
           path: RecipiesWidget.routePath,
-          builder: (context, params) => RecipiesWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'recipies')
+              : RecipiesWidget(),
         ),
         FFRoute(
           name: StatsWidget.routeName,
           path: StatsWidget.routePath,
           requireAuth: true,
-          builder: (context, params) => StatsWidget(),
+          builder: (context, params) =>
+              params.isEmpty ? NavBarPage(initialPage: 'stats') : StatsWidget(),
         ),
         FFRoute(
           name: FaqWidget.routeName,
@@ -126,7 +135,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
         FFRoute(
           name: ScannerWidget.routeName,
           path: ScannerWidget.routePath,
-          builder: (context, params) => ScannerWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'scanner')
+              : ScannerWidget(),
         ),
         FFRoute(
           name: EditprofileWidget.routeName,
@@ -137,6 +148,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           name: BreadbotWidget.routeName,
           path: BreadbotWidget.routePath,
           builder: (context, params) => BreadbotWidget(),
+        ),
+        FFRoute(
+          name: ShoppingListWidget.routeName,
+          path: ShoppingListWidget.routePath,
+          builder: (context, params) => ShoppingListWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -256,6 +272,7 @@ class FFParameters {
     ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -274,6 +291,7 @@ class FFParameters {
       type,
       isList,
       collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
     );
   }
 }

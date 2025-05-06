@@ -32,5 +32,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:179267814872:ios:74d6894a24fb1768931ead</string>
+	<key>DATABASE_URL</key>
+	<string>https://get-that-bread-asju8m-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

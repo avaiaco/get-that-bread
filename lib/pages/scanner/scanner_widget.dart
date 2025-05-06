@@ -1,12 +1,16 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/ai_agents/ai_agent.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'scanner_model.dart';
 export 'scanner_model.dart';
 
@@ -21,10 +25,13 @@ class ScannerWidget extends StatefulWidget {
   State<ScannerWidget> createState() => _ScannerWidgetState();
 }
 
-class _ScannerWidgetState extends State<ScannerWidget> {
+class _ScannerWidgetState extends State<ScannerWidget>
+    with TickerProviderStateMixin {
   late ScannerModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -32,6 +39,33 @@ class _ScannerWidgetState extends State<ScannerWidget> {
     _model = createModel(context, () => ScannerModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'scanner'});
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -52,41 +86,47 @@ class _ScannerWidgetState extends State<ScannerWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
-          automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderRadius: 8.0,
-            buttonSize: 40.0,
-            fillColor: FlutterFlowTheme.of(context).primary,
-            icon: Icon(
-              Icons.arrow_back,
-              color: FlutterFlowTheme.of(context).info,
-              size: 24.0,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(50.0),
+          child: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primary,
+            automaticallyImplyLeading: false,
+            title: Align(
+              alignment: AlignmentDirectional(0.0, -1.0),
+              child: Text(
+                'Receipt Scanner',
+                textAlign: TextAlign.center,
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      font: GoogleFonts.lemon(
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
+                      ),
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      fontSize: 25.0,
+                      letterSpacing: 0.0,
+                      fontWeight: FlutterFlowTheme.of(context)
+                          .headlineMedium
+                          .fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                    ),
+              ),
             ),
-            onPressed: () async {
-              logFirebaseEvent('SCANNER_PAGE_arrow_back_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
-              context.safePop();
-            },
+            actions: [],
+            centerTitle: false,
+            toolbarHeight: 50.0,
+            elevation: 2.0,
           ),
-          title: Text(
-            'Receipt Scanner',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Lemon',
-                  color: Colors.white,
-                  fontSize: 25.0,
-                  letterSpacing: 0.0,
-                ),
-          ),
-          actions: [],
-          centerTitle: false,
-          elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Align(
                 alignment: AlignmentDirectional(0.0, -1.0),
@@ -152,20 +192,30 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                       }
 
                       if (_model.uploadedFileUrl != '') {
-                        logFirebaseEvent('Container_show_snack_bar');
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Receipt Upload Success!',
-                              style: TextStyle(
-                                color: FlutterFlowTheme.of(context).primaryText,
-                              ),
-                            ),
-                            duration: Duration(milliseconds: 4000),
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).secondary,
-                          ),
-                        );
+                        logFirebaseEvent('Container_a_i_agent');
+                        await callAiAgent(
+                          context: context,
+                          prompt:
+                              'Get the product names and their prices from this receipt',
+                          imageUrl: _model.uploadedFileUrl,
+                          threadId: '1234',
+                          agentCloudFunctionName: 'receiptAgent',
+                          provider: 'GOOGLE',
+                          agentJson:
+                              "{\"status\":\"LIVE\",\"identifier\":{\"name\":\"receiptAgent\",\"key\":\"66f08\"},\"name\":\"receipt agent\",\"description\":\"The user uploads their receipt and the receipt agent will get the products and prices to display to the user\",\"aiModel\":{\"provider\":\"GOOGLE\",\"model\":\"gemini-2.0-flash\",\"parameters\":{\"temperature\":{\"inputValue\":1},\"maxTokens\":{\"inputValue\":8192},\"topP\":{\"inputValue\":0.95}},\"messages\":[{\"role\":\"SYSTEM\",\"text\":\"Analyze the receipt image line by line where product information appears. Do not inlcude things like total, subtotal, or tax, only products. For each product found, extract its name as a string and price as a double, and add a gluten free boolean at the end and set it to true. Compile these into a JSON \\n\\nExample JSON format:\\n{\\n  \\\"items\\\": [\\n    { \\\"item\\\": \\\"Apple\\\", \\\"price\\\": 1.50, \\\"gluten_free\\\": true },\\n    { \\\"item\\\": \\\"Banana\\\", \\\"price\\\": 2.00, \\\"gluten_free\\\": true }\\n  ]\\n}\"}]},\"requestOptions\":{\"requestTypes\":[\"IMAGE\",\"PLAINTEXT\"]},\"responseOptions\":{\"responseType\":\"JSON\"}}",
+                          responseType: 'JSON',
+                        ).then((generatedText) {
+                          safeSetState(() =>
+                              _model.extractedReceiptInfo = generatedText);
+                        });
+
+                        logFirebaseEvent('Container_update_page_state');
+                        _model.receiptWrapper =
+                            ReceiptWrapperStruct.maybeFromMap(getJsonField(
+                          _model.extractedReceiptInfo,
+                          r'''$''',
+                        ));
+                        safeSetState(() {});
                       } else {
                         logFirebaseEvent('Container_show_snack_bar');
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -182,10 +232,12 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                           ),
                         );
                       }
+
+                      safeSetState(() {});
                     },
                     child: Container(
                       width: 300.0,
-                      height: 456.51,
+                      height: 304.5,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).tertiary,
                         borderRadius: BorderRadius.circular(8.0),
@@ -221,17 +273,165 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                         ],
                       ),
                     ),
-                  ),
+                  ).animateOnPageLoad(
+                      animationsMap['containerOnPageLoadAnimation']!),
                 ),
               ),
+              if (_model.uploadedFileUrl == '')
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                  child: Text(
+                    'Tap above to add receipt',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          font: GoogleFonts.inter(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
+                  ),
+                ),
+              if (_model.uploadedFileUrl != '')
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                  child: Text(
+                    'Uncheck items that are not gluten free',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          font: GoogleFonts.inter(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
+                  ),
+                ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-                child: Text(
-                  'Tap above to add receipt',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
-                        letterSpacing: 0.0,
-                      ),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                child: Container(
+                  height: 227.94,
+                  decoration: BoxDecoration(),
+                  child: Builder(
+                    builder: (context) {
+                      final itemsListView = _model.receiptWrapper?.items
+                              .take(10)
+                              .toList()
+                              .toList() ??
+                          [];
+
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: itemsListView.length,
+                        itemBuilder: (context, itemsListViewIndex) {
+                          final itemsListViewItem =
+                              itemsListView[itemsListViewIndex];
+                          return Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 5.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      50.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    itemsListViewItem.item,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(1.0, -1.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 50.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderRadius: 8.0,
+                                      buttonSize: 50.0,
+                                      fillColor:
+                                          itemsListViewItem.glutenFree == false
+                                              ? Color(0xFF808080)
+                                              : FlutterFlowTheme.of(context)
+                                                  .primary,
+                                      icon: Icon(
+                                        Icons.check_circle_sharp,
+                                        color:
+                                            FlutterFlowTheme.of(context).info,
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () async {
+                                        logFirebaseEvent(
+                                            'SCANNER_check_circle_sharp_ICN_ON_TAP');
+                                        logFirebaseEvent(
+                                            'IconButton_update_page_state');
+                                        _model.updateReceiptWrapperStruct(
+                                          (e) => e
+                                            ..updateItems(
+                                              (e) => e[itemsListViewIndex] =
+                                                  ReceiptItemDataTypeStruct(
+                                                item: itemsListViewItem.item,
+                                                price: itemsListViewItem.price,
+                                                glutenFree: itemsListViewItem
+                                                            .glutenFree ==
+                                                        false
+                                                    ? true
+                                                    : false,
+                                              ),
+                                            ),
+                                        );
+                                        safeSetState(() {});
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
               if (_model.uploadedFileUrl != '')
@@ -239,19 +439,80 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                   alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent('SCANNER_PAGE_saveReceipt_ON_TAP');
                         logFirebaseEvent('saveReceipt_backend_call');
 
-                        await ReceiptsRecord.collection
-                            .doc()
-                            .set(createReceiptsRecordData(
-                              receiptImage: _model.uploadedFileUrl,
-                              userId: currentUserUid,
-                              timeStamp: getCurrentTimestamp,
-                            ));
+                        var receiptsRecordReference =
+                            ReceiptsRecord.collection.doc();
+                        await receiptsRecordReference.set({
+                          ...createReceiptsRecordData(
+                            receiptImage: _model.uploadedFileUrl,
+                            userId: currentUserUid,
+                            timeStamp: getCurrentTimestamp,
+                          ),
+                          ...mapToFirestore(
+                            {
+                              'receipt_items':
+                                  getReceiptItemDataTypeListFirestoreData(
+                                _model.receiptWrapper?.items,
+                              ),
+                            },
+                          ),
+                        });
+                        _model.backendCall =
+                            ReceiptsRecord.getDocumentFromData({
+                          ...createReceiptsRecordData(
+                            receiptImage: _model.uploadedFileUrl,
+                            userId: currentUserUid,
+                            timeStamp: getCurrentTimestamp,
+                          ),
+                          ...mapToFirestore(
+                            {
+                              'receipt_items':
+                                  getReceiptItemDataTypeListFirestoreData(
+                                _model.receiptWrapper?.items,
+                              ),
+                            },
+                          ),
+                        }, receiptsRecordReference);
+                        if (_model.backendCall?.reference != null) {
+                          logFirebaseEvent('saveReceipt_show_snack_bar');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Receipt Saved!',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).secondary,
+                            ),
+                          );
+                        } else {
+                          logFirebaseEvent('saveReceipt_show_snack_bar');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Receipt Upload Failed, Please Try Again',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).secondary,
+                            ),
+                          );
+                        }
+
+                        safeSetState(() {});
                       },
                       text: 'Save Receipt',
                       options: FFButtonOptions(
@@ -263,14 +524,28 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Inter',
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                         elevation: 0.0,
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                    ),
+                    ).animateOnPageLoad(
+                        animationsMap['buttonOnPageLoadAnimation']!),
                   ),
                 ),
             ],

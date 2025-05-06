@@ -30,10 +30,19 @@ class ReceiptsRecord extends FirestoreRecord {
   DateTime? get timeStamp => _timeStamp;
   bool hasTimeStamp() => _timeStamp != null;
 
+  // "receipt_items" field.
+  List<ReceiptItemDataTypeStruct>? _receiptItems;
+  List<ReceiptItemDataTypeStruct> get receiptItems => _receiptItems ?? const [];
+  bool hasReceiptItems() => _receiptItems != null;
+
   void _initializeFields() {
     _receiptImage = snapshotData['receipt_image'] as String?;
     _userId = snapshotData['user_id'] as String?;
     _timeStamp = snapshotData['time_stamp'] as DateTime?;
+    _receiptItems = getStructList(
+      snapshotData['receipt_items'],
+      ReceiptItemDataTypeStruct.fromMap,
+    );
   }
 
   static CollectionReference get collection =>
@@ -91,14 +100,16 @@ class ReceiptsRecordDocumentEquality implements Equality<ReceiptsRecord> {
 
   @override
   bool equals(ReceiptsRecord? e1, ReceiptsRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.receiptImage == e2?.receiptImage &&
         e1?.userId == e2?.userId &&
-        e1?.timeStamp == e2?.timeStamp;
+        e1?.timeStamp == e2?.timeStamp &&
+        listEquality.equals(e1?.receiptItems, e2?.receiptItems);
   }
 
   @override
-  int hash(ReceiptsRecord? e) =>
-      const ListEquality().hash([e?.receiptImage, e?.userId, e?.timeStamp]);
+  int hash(ReceiptsRecord? e) => const ListEquality()
+      .hash([e?.receiptImage, e?.userId, e?.timeStamp, e?.receiptItems]);
 
   @override
   bool isValidKey(Object? o) => o is ReceiptsRecord;

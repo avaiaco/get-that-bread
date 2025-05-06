@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -42,12 +41,30 @@ class RecipesRecord extends FirestoreRecord {
   double get rating => _rating ?? 0.0;
   bool hasRating() => _rating != null;
 
+  // "cooktime" field.
+  int? _cooktime;
+  int get cooktime => _cooktime ?? 0;
+  bool hasCooktime() => _cooktime != null;
+
+  // "ingredients" field.
+  String? _ingredients;
+  String get ingredients => _ingredients ?? '';
+  bool hasIngredients() => _ingredients != null;
+
+  // "recipe" field.
+  String? _recipe;
+  String get recipe => _recipe ?? '';
+  bool hasRecipe() => _recipe != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _description = snapshotData['description'] as String?;
     _category = getDataList(snapshotData['category']);
     _image = snapshotData['image'] as String?;
     _rating = castToType<double>(snapshotData['rating']);
+    _cooktime = castToType<int>(snapshotData['cooktime']);
+    _ingredients = snapshotData['ingredients'] as String?;
+    _recipe = snapshotData['recipe'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -89,6 +106,9 @@ Map<String, dynamic> createRecipesRecordData({
   String? description,
   String? image,
   double? rating,
+  int? cooktime,
+  String? ingredients,
+  String? recipe,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -96,6 +116,9 @@ Map<String, dynamic> createRecipesRecordData({
       'description': description,
       'image': image,
       'rating': rating,
+      'cooktime': cooktime,
+      'ingredients': ingredients,
+      'recipe': recipe,
     }.withoutNulls,
   );
 
@@ -112,12 +135,23 @@ class RecipesRecordDocumentEquality implements Equality<RecipesRecord> {
         e1?.description == e2?.description &&
         listEquality.equals(e1?.category, e2?.category) &&
         e1?.image == e2?.image &&
-        e1?.rating == e2?.rating;
+        e1?.rating == e2?.rating &&
+        e1?.cooktime == e2?.cooktime &&
+        e1?.ingredients == e2?.ingredients &&
+        e1?.recipe == e2?.recipe;
   }
 
   @override
-  int hash(RecipesRecord? e) => const ListEquality()
-      .hash([e?.name, e?.description, e?.category, e?.image, e?.rating]);
+  int hash(RecipesRecord? e) => const ListEquality().hash([
+        e?.name,
+        e?.description,
+        e?.category,
+        e?.image,
+        e?.rating,
+        e?.cooktime,
+        e?.ingredients,
+        e?.recipe
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is RecipesRecord;

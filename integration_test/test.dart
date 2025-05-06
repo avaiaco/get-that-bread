@@ -122,7 +122,7 @@ void main() async {
       (WidgetTester tester) async {
     _overrideOnError();
     await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'nickp123@gmail.com', password: '123456789');
+        email: 'testAccount@email.com', password: 'password');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => FFAppState(),
       child: MyApp(
@@ -132,11 +132,9 @@ void main() async {
     await GoogleFonts.pendingFonts();
 
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
-    await tester.tap(find.byKey(const ValueKey('DeleteButton_zunb')));
+    await tester.tap(find.byKey(const ValueKey('GlutenInfoButton_1k7k')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.tap(find.text('Confirm'));
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    expect(find.byKey(const ValueKey('DeleteButton_zunb')), findsNothing);
+    expect(find.text('Gluten Free Items'), findsOneWidget);
   });
 
   testWidgets('US5 Breadbot', (WidgetTester tester) async {

@@ -54,13 +54,6 @@ class FFAppState extends ChangeNotifier {
     _cookedRecipe = value;
   }
 
-  /// amount of recipes saved
-  int _savedRecipes = 0;
-  int get savedRecipes => _savedRecipes;
-  set savedRecipes(int value) {
-    _savedRecipes = value;
-  }
-
   int _numOfShopLists = 0;
   int get numOfShopLists => _numOfShopLists;
   set numOfShopLists(int value) {
@@ -95,5 +88,11 @@ class FFAppState extends ChangeNotifier {
   bool get IsSideBarExpanded => _IsSideBarExpanded;
   set IsSideBarExpanded(bool value) {
     _IsSideBarExpanded = value;
+  }
+
+  String _lastSavedRecipeName = '';
+  String get lastSavedRecipeName => _lastSavedRecipeName;
+  set lastSavedRecipeName(String value) {
+    _lastSavedRecipeName = value;
   }
 }
