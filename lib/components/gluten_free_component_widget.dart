@@ -2,8 +2,10 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'gluten_free_component_model.dart';
 export 'gluten_free_component_model.dart';
 
@@ -169,17 +171,30 @@ class _GlutenFreeComponentWidgetState extends State<GlutenFreeComponentWidget> {
                                           .fontStyle,
                                     ),
                               ),
-                              Text(
-                                formatNumber(
-                                  componentsItem.price,
-                                  formatType: FormatType.decimal,
-                                  decimalType: DecimalType.periodDecimal,
-                                  currency: '\$',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      font: GoogleFonts.inter(
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 15.0, 0.0),
+                                child: Text(
+                                  formatNumber(
+                                    componentsItem.price,
+                                    formatType: FormatType.decimal,
+                                    decimalType: DecimalType.periodDecimal,
+                                    currency: '\$',
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .fontWeight,
@@ -187,14 +202,7 @@ class _GlutenFreeComponentWidgetState extends State<GlutenFreeComponentWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
+                                ),
                               ),
                             ],
                           );

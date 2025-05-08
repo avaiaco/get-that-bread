@@ -193,6 +193,13 @@ class _ReceiptsWidgetState extends State<ReceiptsWidget>
                               height: 400.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).tertiary,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(0.0),
+                                  topRight: Radius.circular(0.0),
+                                ),
+                                shape: BoxShape.rectangle,
                               ),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(

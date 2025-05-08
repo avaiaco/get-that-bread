@@ -60,6 +60,7 @@ class _ShoppingListWidgetState extends State<ShoppingListWidget> {
                     fontStyle:
                         FlutterFlowTheme.of(context).headlineSmall.fontStyle,
                   ),
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
                   letterSpacing: 0.0,
                   fontWeight:
                       FlutterFlowTheme.of(context).headlineSmall.fontWeight,

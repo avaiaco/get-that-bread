@@ -188,7 +188,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.receipt_long,
               size: 24.0,
             ),
-            label: 'Saved Receipts',
+            label: ' Receipts',
             tooltip: '',
           ),
           BottomNavigationBarItem(

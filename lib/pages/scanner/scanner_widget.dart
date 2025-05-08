@@ -2,15 +2,21 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/ai_agents/ai_agent.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:math';
+import 'dart:ui';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'scanner_model.dart';
 export 'scanner_model.dart';
 
@@ -105,7 +111,7 @@ class _ScannerWidgetState extends State<ScannerWidget>
                             .headlineMedium
                             .fontStyle,
                       ),
-                      color: FlutterFlowTheme.of(context).primaryText,
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
                       fontSize: 25.0,
                       letterSpacing: 0.0,
                       fontWeight: FlutterFlowTheme.of(context)
@@ -330,11 +336,8 @@ class _ScannerWidgetState extends State<ScannerWidget>
                   decoration: BoxDecoration(),
                   child: Builder(
                     builder: (context) {
-                      final itemsListView = _model.receiptWrapper?.items
-                              .take(10)
-                              .toList()
-                              .toList() ??
-                          [];
+                      final itemsListView =
+                          _model.receiptWrapper?.items.toList() ?? [];
 
                       return ListView.builder(
                         padding: EdgeInsets.zero,
